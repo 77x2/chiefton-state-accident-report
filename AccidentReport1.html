@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Chiefton State Accident Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h2 {
+            color: #007BFF;
+            margin-bottom: 10px;
+        }
+        .question-block {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .input-group label {
+            margin-right: 10px;
+            flex: 1;
+        }
+        .input-group input {
+            flex: 2;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: border-color 0.3s;
+        }
+        .input-group input:focus {
+            border-color: #007BFF;
+        }
+        .option-button {
+            padding: 8px 12px;
+            margin: 5px;
+            border: none;
+            border-radius: 4px;
+            background-color: #e0e0e0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .option-button:hover {
+            background-color: #d0d0d0;
+        }
+        .option-button.selected {
+            background-color: #007BFF;
+            color: white;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        #output {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <form id="qa-form">
+        <h2><b>Official Info</b></h2>
+        <div class="question-block">
+            <div class="input-group">
+                <label for="answer1">Reporting Official:</label>
+                <input type="text" id="answer1" name="Reporting Official">
+            </div>
+        </div>
+        <div class="question-block">
+            <div class="input-group">
+                <label for="answer2">Other Units Involved:</label>
+                <input type="text" id="answer2" name="Other Units On Scene">
+            </div>
+        </div>
+        <br>
+        <h2><b>General Incident Info</b></h2>
+        <div class="question-block">
+            <div class="input-group">
+                <label for="answer3">Number of Vehicles Involved:</label>
+                <input type="text" id="answer3" name="Vehicles Involved">
+            </div>
+        </div>
+        <div class="question-block">
+            <p>Class 4 (Fatal)</p>
+            <button type="button" class="option-button" data-input-id="answer4">Y</button> /
+            <button type="button" class="option-button" data-input-id="answer4">N</button>
+            <input type="hidden" id="answer4" name="`Fatal`">
+        </div>
+        <div class="question-block">
+            <p>CMV Involved (Busses, School Busses, etc.)</p>
+            <button type="button" class="option-button" data-input-id="answer5">Y</button> /
+            <button type="button" class="option-button" data-input-id="answer5">N</button>
+            <input type="hidden" id="answer5" name="`CMV`">
+        </div>
+        <div class="question-block">
+            <p>School Bus Involved</p>
+            <button type="button" class="option-button" data-input-id="answer6">Y</button> /
+            <button type="button" class="option-button" data-input-id="answer6">N</button>
+            <input type="hidden" id="answer6" name="`School Bus`">
+        </div>
+        <div class="question-block">
+            <p>Active School Zone</p>
+            <button type="button" class="option-button" data-input-id="answer7">Y</button> /
+            <button type="button" class="option-button" data-input-id="answer7">N</button>
+            <input type="hidden" id="answer7" name="`Active School Zone`">
+        </div>
+        <div class="question-block">
+            <p>Within 50ft of Railroad / Train Passage</p>
+            <button type="button" class="option-button" data-input-id="answer8">Y</button> /
+            <button type="button" class="option-button" data-input-id="answer8">N</button>
+            <input type="hidden" id="answer8" name="`Railroad`">
+        </div>
+        <div class="question-block">
+            <p>Active Construction Zone</p>
+            <button type="button" class="option-button" data-input-id="answer9">Y</button> /
+            <button type="button" class="option-button" data-input-id="answer9">N</button>
+            <input type="hidden" id="answer9" name="`Construction Zone`">
+        </div>
+        <br>
+        <h2><b>Location & Time</b></h2>
+        <div class="question-block">
+            <div class="input-group">
+                <label for="answer10">Time Accident Occurred:</label>
+                <input type="text" id="answer10" name="Time of Accident">
+            </div>
+        </div>
+        <div class="question-block">
+            <div class="input-group">
+                <label for="answer11">Time of Report (Now):</label>
+                <input type="text" id="answer11" name="Time of Report">
+            </div>
+        </div>
+        <div class="question-block">
+            <div class="input-group">
+                <label for="answer12">State:</label>
+                <input type="text" id="answer12" name="County">
+            </div>
+        </div>
+        <div class="question-block">
+            <div class="input-group">
+                <label for="answer13">County:</label>
+                <input type="text" id="answer13" name="County">
+            </div>
+        </div>
+        <div class="question-block">
+            <div class="input-group">
+                <label for="answer14">City:</label>
+                <input type="text" id="answer14" name="City">
+            </div>
+        </div>
+        <div class="question-block">
+            <div class="input-group">
+                <label for="answer15">Roadway Name & Postal Code:</label>
+                <input type="text" id="answer15" name="Roadway / Postal">
+            </div>
+        </div>
+        <div class="question-block">
+            <div class="input-group">
+                <label for="answer16">Speed Limit:</label>
+                <input type="text" id="answer16" name="Speed Limit">
+            </div>
+        </div>
+        <div class="question-block">
+            <div class="input-group">
+                <label for="answer17">Roadway Alignment:</label>
+                <input type="text" id="answer17" name="Roadway Alignment">
+            </div>
+        </div>
+        <br>
+        <h2><b>Weather Conditions</b></h2>
+        <div class="question-block">
+            <div class="input-group">
+                <label for="answer18">Weather:</label>
+                <input type="text" id="answer18" name="Weather">
+            </div>
+        </div>
+        <div class="question-block">
+            <div class="input-group">
+                <label for="answer19">Light Conditions (1 Dark - 10 Well Lit):</label>
+                <input type="text" id="answer19" name="Light Conditions">
+            </div>
+        </div>
+        <div class="question-block">
+            <div class="input-group">
+                <label for="answer20">Surface Conditions (1 Normal - 10 Flooded):</label>
+                <input type="text" id="answer20" name="Surface Conditions">
+            </div>
+        </div>
+        <br>
+        <h2><b>Additional Scene Info</b></h2>
+        <div class="question-block">
+            <p>Collision w/ Parked Vehicle</p>
+            <button type="button" class="option-button" data-input-id="answer21">Y</button> /
+            <button type="button" class="option-button" data-input-id="answer21">N</button>
+            <input type="hidden" id="answer21" name="`Collision w/ Parked Vehicle`">
+        </div>
+        <div class="question-block">
+            <p>Collision w/ Animal</p>
+            <button type="button" class="option-button" data-input-id="answer22">Y</button> /
+            <button type="button" class="option-button" data-input-id="answer22">N</button>
+            <input type="hidden" id="answer22" name="`Collision w/ Animal`">
+        </div>
+        <div class="question-block">
+            <p>Collision w/ Pedestrian</p>
+            <button type="button" class="option-button" data-input-id="answer23">Y</button> /
+            <button type="button" class="option-button" data-input-id="answer23">N</button>
+            <input type="hidden" id="answer23" name="`Collision w/ Pedestrian`">
+        </div>
+        <div class="question-block">
+            <p>Hit & Run?</p>
+            <button type="button" class="option-button" data-input-id="answer24">Y</button> /
+            <button type="button" class="option-button" data-input-id="answer24">N</button>
+            <input type="hidden" id="answer24" name="`Hit & Run`">
+        </div>
+        <input type="submit" value="Submit">
+    </form>
+
+    <div id="output"></div>
+
+    <script>
+        document.querySelectorAll('.option-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const inputId = button.dataset.inputId;
+                const value = button.textContent;
+                document.getElementById(inputId).value = value;
+
+                document.querySelectorAll(`.option-button[data-input-id="${inputId}"]`).forEach(btn => {
+                    btn.classList.remove('selected');
+                });
+
+                button.classList.add('selected');
+            });
+        });
+
+        document.getElementById('qa-form').addEventListener('submit', event => {
+            event.preventDefault();
+
+            const outputDiv = document.getElementById('output');
+            outputDiv.innerHTML = '';
+
+            const idsToInclude = [
+                'answer1', 'answer2', 'spacer',
+                'answer3', 'answer4', 'answer5', 'answer6', 'answer7', 'answer8', 'answer9', 'spacer',
+                'answer10', 'answer11', 'answer12', 'answer13', 'answer14', 'answer15', 'answer16', 'answer17', 'spacer',
+                'answer18', 'answer19', 'answer20', 'spacer',
+                'answer21', 'answer22', 'answer23', 'answer24', 'spacer'
+            ];
+
+            idsToInclude.forEach(id => {
+                if (id === 'spacer') {
+                    outputDiv.appendChild(document.createElement('br'));
+                } else {
+                    const element = document.getElementById(id);
+                    const p = document.createElement('p');
+                    p.textContent = `> ${element.name}: ${element.value}`;
+                    outputDiv.appendChild(p);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
